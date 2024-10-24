@@ -1,0 +1,32 @@
+[package]
+name = "rust-cli-lib"
+authors = ["Sandeep Bansal <sandeep.bansal85@gmail.com>"]
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+path = "src/lib.rs"
+
+[dependencies]
+tokio = { workspace = true, features = ["rt"] }
+tracing-subscriber = { workspace = true, features = ["env-filter"] }
+tracing = { workspace = true }
+wasm-bindgen = { workspace = true }
+wasm-bindgen-futures = { workspace = true }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+tracing-web = { workspace = true }
+web-sys = { workspace = true, features = [
+    "Document",
+    "Window",
+    "Element",
+]}
+
+[dev-dependencies]
+criterion = { workspace = true }
+tokio = { workspace = true, features = ["rt"] }
+
+[[bench]]
+name = "initial_benchmark"
+harness = false

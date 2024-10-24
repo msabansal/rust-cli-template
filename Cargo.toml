@@ -1,0 +1,22 @@
+[workspace]
+members = ["crates/*"]
+resolver = "2"
+
+# [workspace.package]
+# edition = "2021"
+# license = "Apache-2.0"
+
+
+[workspace.dependencies]
+console_error_panic_hook = "0.1"
+console_log = "1.0"
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
+web-sys = "0.3"
+tracing = { version = "0.1.40" }
+tracing-subscriber = { version = "0.3.18" }
+tracing-web = "0.1"
+criterion = { version = "0.5", default-features=false, features = ["async_tokio"]}
+tokio = { version = "1", default-features = false}
+clap = "4.5"
+

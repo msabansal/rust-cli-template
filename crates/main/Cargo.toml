@@ -1,0 +1,16 @@
+[package]
+name = "rust-cli-main"
+authors = ["Sandeep Bansal <sandeep.bansal85@gmail.com>"]
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { workspace = true, features = ["derive"] }
+tokio = { version = "1", default-features = false, features = ["rt"] }
+tracing-subscriber = { workspace = true, features = ["env-filter"] }
+tracing = { workspace = true }
+rust-cli-lib = { path = "../lib" }
+
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+tokio = { version = "1", default-features = true, features = ["full"] }
